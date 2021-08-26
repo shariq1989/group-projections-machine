@@ -1,0 +1,23 @@
+Sports Group Machine
+
+Set up Page
+	Input
+		DONE
+			# Teams
+			Team Names
+			# of promoted teams
+		TODO
+			D/W/L points
+			# of times teams play each other
+			Retain entered team names when groupsnum/teamnum are changed
+			enter to submit
+			select premmade groups for existing tournaments
+	Display
+		DONE/
+			Fixtures List 
+			Group Table
+			Let users pick result
+			colorize promoted teams
+
+		TODO
+			score (points for/against for tie breakers)
