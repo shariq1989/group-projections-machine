@@ -47,17 +47,12 @@
         </v-card>
         <div class="grid-container" style="padding-top: 0.5em">
           <v-card class="grid-item">
-            <v-card-title>Groups</v-card-title>
-            <v-simple-table>
-              <tbody>
-                <tr v-for="(group, index) in groups" :key="index">
-                  <td>Group {{ index + 1 }}</td>
-                  <td v-for="(team, innerIndex) in group" :key="innerIndex">
-                    <v-text-field v-model="team.name" hide-details filled />
-                  </td>
-                </tr>
-              </tbody>
-            </v-simple-table>
+            <v-row v-for="(group, index) in groups" :key="index">
+              <v-card-text>Group {{ index + 1 }}</v-card-text>
+              <v-col cols="12" lg="2" md="4" sm="6" v-for="(team, innerIndex) in group" :key="innerIndex">
+                <v-text-field v-model="team.name" hide-details filled />
+              </v-col>
+            </v-row>
           </v-card>
         </div>
         <div style="padding: 0.5em">
