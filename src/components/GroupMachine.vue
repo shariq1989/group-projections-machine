@@ -46,10 +46,17 @@
           </v-card-text>
         </v-card>
         <div class="grid-container" style="padding-top: 0.5em">
-          <v-card class="grid-item">
+          <v-card class="grid-item" style="padding: 1em">
             <v-row v-for="(group, index) in groups" :key="index">
               <v-card-text>Group {{ index + 1 }}</v-card-text>
-              <v-col cols="12" lg="2" md="4" sm="6" v-for="(team, innerIndex) in group" :key="innerIndex">
+              <v-col
+                cols="12"
+                lg="2"
+                md="4"
+                sm="6"
+                v-for="(team, innerIndex) in group"
+                :key="innerIndex"
+              >
                 <v-text-field v-model="team.name" hide-details filled />
               </v-col>
             </v-row>
@@ -70,100 +77,107 @@
             >
           </div>
           <!-- Group Display -->
-          <div class="grid-container">
-            <v-card
-              style="margin: 0.5em; margin-left: 0"
+          <v-row>
+            <v-col
+              cols="12"
+              lg="4"
+              md="6"
+              sm="12"
               v-for="(group, index) in groups"
               :key="index"
             >
-              <v-card-title>Group {{ index + 1 }}</v-card-title>
-              <v-card-text>
-                <v-simple-table>
-                  <thead>
-                    <tr>
-                      <th>Team</th>
-                      <th>Won</th>
-                      <th>Drawn</th>
-                      <th>Lost</th>
-                      <th>Points</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      v-for="(team, innerIndex) in group"
-                      :key="innerIndex"
-                      v-bind:class="{ promotion: innerIndex < isPromoted }"
-                    >
-                      <td>
-                        {{ team.name }}
-                      </td>
-                      <td>{{ team.won }}</td>
-                      <td>{{ team.drawn }}</td>
-                      <td>{{ team.lost }}</td>
-                      <td>{{ team.points }}</td>
-                    </tr>
-                  </tbody>
-                </v-simple-table>
-              </v-card-text>
-              <div>
-                <!-- Fixtures List -->
-                <v-card-title>Fixtures</v-card-title>
+              <v-card>
+                <v-card-title>Group {{ index + 1 }}</v-card-title>
                 <v-card-text>
                   <v-simple-table>
-                    <tr
-                      style="text-align: left"
-                      v-for="(fixture, fixIndex) in fixtures[index]"
-                      :key="fixIndex"
-                    >
-                      <td>
-                        <input
-                          type="radio"
-                          v-bind:id="
-                            fixture.t1.id.toString() + fixture.id.toString()
-                          "
-                          v-bind:name="
-                            fixture.t1.id.toString() + fixture.id.toString()
-                          "
-                          value="0"
-                          v-model.number="fixture.res"
-                          v-on:click="calculateResults(index)"
-                        />
-                        <label v-bind:for="fixture.t1.id">{{
-                          fixture.t1.name
-                        }}</label>
-                      </td>
-                      <td>
-                        <input
-                          type="radio"
-                          v-bind:id="fixture.id + 'drawn'"
-                          v-bind:name="fixture.id + 'drawn'"
-                          value="1"
-                          v-model.number="fixture.res"
-                          v-on:click="calculateResults(index)"
-                        />
-                        <label for="fixture[1].id-drawn">Drawn</label>
-                      </td>
-                      <td>
-                        <input
-                          type="radio"
-                          v-bind:id="
-                            fixture.t2.id.toString() + fixture.id.toString()
-                          "
-                          v-bind:name="
-                            fixture.t2.id.toString() + fixture.id.toString()
-                          "
-                          value="2"
-                          v-model.number="fixture.res"
-                          v-on:click="calculateResults(index)"
-                        />
-                        <label for="fixture.t2.id">{{ fixture.t2.name }}</label>
-                      </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Team</th>
+                        <th>Won</th>
+                        <th>Drawn</th>
+                        <th>Lost</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(team, innerIndex) in group"
+                        :key="innerIndex"
+                        v-bind:class="{ promotion: innerIndex < isPromoted }"
+                      >
+                        <td>
+                          {{ team.name }}
+                        </td>
+                        <td>{{ team.won }}</td>
+                        <td>{{ team.drawn }}</td>
+                        <td>{{ team.lost }}</td>
+                        <td>{{ team.points }}</td>
+                      </tr>
+                    </tbody>
                   </v-simple-table>
                 </v-card-text>
-              </div>
-            </v-card>
-          </div>
+                <div>
+                  <!-- Fixtures List -->
+                  <v-card-title>Fixtures</v-card-title>
+                  <v-card-text>
+                    <v-simple-table>
+                      <tr
+                        style="text-align: left"
+                        v-for="(fixture, fixIndex) in fixtures[index]"
+                        :key="fixIndex"
+                      >
+                        <td>
+                          <input
+                            type="radio"
+                            v-bind:id="
+                              fixture.t1.id.toString() + fixture.id.toString()
+                            "
+                            v-bind:name="
+                              fixture.t1.id.toString() + fixture.id.toString()
+                            "
+                            value="0"
+                            v-model.number="fixture.res"
+                            v-on:click="calculateResults(index)"
+                          />
+                          <label v-bind:for="fixture.t1.id">{{
+                            fixture.t1.name
+                          }}</label>
+                        </td>
+                        <td>
+                          <input
+                            type="radio"
+                            v-bind:id="fixture.id + 'drawn'"
+                            v-bind:name="fixture.id + 'drawn'"
+                            value="1"
+                            v-model.number="fixture.res"
+                            v-on:click="calculateResults(index)"
+                          />
+                          <label for="fixture[1].id-drawn">Drawn</label>
+                        </td>
+                        <td>
+                          <input
+                            type="radio"
+                            v-bind:id="
+                              fixture.t2.id.toString() + fixture.id.toString()
+                            "
+                            v-bind:name="
+                              fixture.t2.id.toString() + fixture.id.toString()
+                            "
+                            value="2"
+                            v-model.number="fixture.res"
+                            v-on:click="calculateResults(index)"
+                          />
+                          <label for="fixture.t2.id">{{
+                            fixture.t2.name
+                          }}</label>
+                        </td>
+                      </tr>
+                    </v-simple-table>
+                  </v-card-text>
+                </div>
+              </v-card>
+            </v-col>
+          </v-row>
         </div>
       </div>
       <!--{{ testConsole }}-->
