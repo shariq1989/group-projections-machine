@@ -2,12 +2,28 @@
   <v-container>
     <div>
       <div class="inputForm" v-if="!submitted">
-        <v-card>
-          <v-card-title>Group Projection Machine</v-card-title>
-          <v-card-text>
-            <!-- Group Creation Form -->
+        <v-card style="padding: 1em" color="#DCEEFB">
+          <v-container>
             <v-row>
-              <div class="controlFields">
+              <img src="@/assets/drawing-with-label.svg" alt="logo" width="200"
+            /></v-row>
+            <v-row>
+              <h1 style="color: #003e6b">
+                Build a tournament and then run your own projections
+              </h1>
+            </v-row>
+          </v-container>
+          <v-card
+            style="
+              background-color: #ffffff;
+              padding-top: 0.5em;
+              padding-left: 0.5em;
+              padding-right: 1em;
+            "
+          >
+            <v-container style="margin: 0.5em">
+              <!-- Group Creation Form -->
+              <v-row>
                 <v-text-field
                   type="number"
                   v-on:input="numChanged"
@@ -18,8 +34,6 @@
                   label="Groups"
                   outlined
                 ></v-text-field>
-              </div>
-              <div class="controlFields">
                 <v-text-field
                   v-on:input="numChanged"
                   v-model.number="teamsNum"
@@ -30,8 +44,6 @@
                   label="Teams per Group"
                   outlined
                 />
-              </div>
-              <div class="controlFields">
                 <v-text-field
                   v-model="isPromoted"
                   type="number"
@@ -41,9 +53,9 @@
                   label="Promoted Teams per Group"
                   outlined
                 />
-              </div>
-            </v-row>
-          </v-card-text>
+              </v-row>
+            </v-container>
+          </v-card>
         </v-card>
         <div class="grid-container" style="padding-top: 0.5em">
           <v-card class="grid-item" style="padding: 1em">
