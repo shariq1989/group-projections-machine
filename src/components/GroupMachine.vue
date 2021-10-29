@@ -5,9 +5,6 @@
         <v-card style="padding: 1em" color="#DCEEFB">
           <v-container>
             <v-row>
-              <img src="@/assets/drawing-with-label.svg" alt="logo" width="200"
-            /></v-row>
-            <v-row>
               <h1 style="color: #003e6b">
                 Build a tournament and then run your own projections
               </h1>
